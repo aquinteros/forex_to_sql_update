@@ -1,6 +1,6 @@
 # %%
 from api_key import key
-from sql_credentials import user_name, password
+from sql_credentials import user_name, password, driver, server_name, database_name
 import pandas as pd
 import requests
 from sqlalchemy import create_engine
@@ -60,9 +60,6 @@ df.to_parquet('forex.parquet', engine='fastparquet')
 
 # %%
 # Create a sql server database connection
-driver = 'ODBC Driver 17 for SQL Server'
-server_name = '10.233.49.6'
-database_name = 'HISPAM_OnHR'
 connection_string = f'mssql+pyodbc://{user_name}:{password}@{server_name}/{database_name}?driver={driver}'
 
 engine = create_engine(connection_string)
